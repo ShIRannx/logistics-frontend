@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-sm-12">
+    <a class="btn btn-success" [routerLink]="['new']"> New User</a>
+  </div>
+</div>
+<div class="my-2"></div>
+<div class="row">
+  <div class="col-sm-12">
+    <app-user-list-item [users]="(users | async) ?? []"> </app-user-list-item>
+  </div>
+</div>

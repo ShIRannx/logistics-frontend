@@ -1,0 +1,17 @@
+<nav *ngIf="total !== 1">
+  <ul class="pagination justify-content-end">
+    <li class="page-item" *ngIf="page !== 1">
+      <a class="page-link" (click)="onChangePage(page - 1)">Previous</a>
+    </li>
+    <li
+      class="page-item"
+      *ngFor="let p of getPages()"
+      [class.active]="p === page"
+    >
+      <a class="page-link" (click)="onChangePage(p)">{{ p }}</a>
+    </li>
+    <li class="page-item" *ngIf="page !== total">
+      <a class="page-link" (click)="onChangePage(page + 1)">Next</a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,23 @@
+<div class="col-sm-12">
+  <div class="d-flex">
+    <a class="btn btn-success" [routerLink]="['edit']">Edit</a>&nbsp;<a class="btn btn-danger" (click)="onDeleteUser()">
+      Delete
+    </a>
+  </div>
+  <div class="mb-3"></div>
+  <div>
+    <h5 class="fs-4 mb-1">User Infomation</h5>
+    <div>
+      <span class="fs-5">Username:</span>&nbsp;
+      <span>{{ user?.username }}</span>
+    </div>
+    <div>
+      <span class="fs-5">UUID:</span>&nbsp;
+      <span>{{ user?.uuid }}</span>
+    </div>
+    <div>
+      <span class="fs-5">Admin:</span>&nbsp;
+      <span>{{ user?.authz }}</span>
+    </div>
+  </div>
+</div>

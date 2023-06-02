@@ -1,0 +1,39 @@
+<div class="list-group">
+  <ng-container *ngFor="let user of users">
+    <a class="list-group-item list-group-item-action" [routerLinkActive]="'active'" [routerLink]="[user.uuid]">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">
+          {{ user.username }}
+        </h5>
+      </div>
+    </a>
+  </ng-container>
+</div>
+<!-- <a href="#" class="list-group-item list-group-item-action">A second link item</a> -->
+<!-- <a href="#" class="list-group-item list-group-item-action">A third link item</a> -->
+<!-- <a href="#" class="list-group-item list-group-item-action">A fourth link item</a> -->
+<!-- <a class="list-group-item list-group-item-action disabled">A disabled link item</a> -->
+<!-- <table class="table text-center"> -->
+<!--   <thead> -->
+<!--     <tr> -->
+<!--       <th scope="col">ID</th> -->
+<!--       <th scope="col">Username</th> -->
+<!--       <th scope="col" class="col-1">Admin</th> -->
+<!--       <th scope="col" class="col-2"></th> -->
+<!--     </tr> -->
+<!--   </thead> -->
+<!--   <tbody> -->
+<!--     <tr *ngFor="let user of users"> -->
+<!--       <td>{{ user.uuid }}</td> -->
+<!--       <td>{{ user.username }}</td> -->
+<!--       <td>{{ user.authz }}</td> -->
+<!--       <td> -->
+<!--         <a -->
+<!--           style="cursor: pointer" -->
+<!--           class="link-underline link-underline-opacity-0 link-danger" -->
+<!--           >X</a -->
+<!--         > -->
+<!--       </td> -->
+<!--     </tr> -->
+<!--   </tbody> -->
+<!-- </table> -->

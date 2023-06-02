@@ -1,0 +1,20 @@
+.accordion-button:not(.collapsed)::after {
+  transform: unset;
+  background-image: unset;
+}
+.accordion-button::after {
+  content: unset;
+  width: unset;
+}
+.accordion-body {
+  padding-top: 0.5rem;
+  padding-bottom: unset;
+}
+.context {
+  height: 128px;
+}
+.loading {
+  display: grid;
+  grid-template-columns: 15% 1fr;
+  gap: 12px;
+}

@@ -1,0 +1,36 @@
+<div class="mb-5"></div>
+<div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+  <div class="row">
+    <form [formGroup]="trackingNumbersForm">
+      <div class="form-floating">
+        <textarea
+          name="trackingNumbers"
+          formControlName="trackingNumbers"
+          placeholder="Tracking numbers"
+          class="form-control"
+          style="height: 100px"
+          (click)="trackingNumbersForm.reset()"
+        ></textarea>
+        <label class="floatingTextarea" for="trackingNumbers"
+          >Tracking numbers</label
+        >
+      </div>
+    </form>
+  </div>
+  <div class="mb-3"></div>
+  <div class="row">
+    <ng-container *ngIf="logisticses | async as ls">
+      <ng-container *ngIf="!ls.logisticses.length; else logistics">
+        <div class="mb-5"></div>
+        <h1 class="text-center display-4">
+          Your Logistics Result will show here.
+        </h1>
+      </ng-container>
+      <ng-template #logistics>
+        <app-logistics-container
+          [logisticses]="ls?.logisticses ?? []"
+        ></app-logistics-container>
+      </ng-template>
+    </ng-container>
+  </div>
+</div>

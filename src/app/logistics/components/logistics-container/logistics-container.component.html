@@ -1,0 +1,54 @@
+<div class="accordion">
+  <div class="accordion-item" *ngFor="let logistics of logisticses">
+    <h2 class="accordion-header">
+      <button class="accordion-button text-black bg-transparent" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        单号&nbsp;<strong>{{ logistics.tn }}</strong> &nbsp;的物流信息
+        <button class="ms-auto btn btn-sm btn-light" (click)="onCopy(logistics.tn)" [cdkCopyToClipboard]="logistics.tn">
+          点击复制单号
+        </button>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show">
+      <div class="accordion-body py-1">
+        <ng-container *ngIf="logistics.err; else context">
+          <p class="mb-0">
+            {{ logistics.err }}
+          </p>
+        </ng-container>
+        <ng-template #context>
+          <div class="d-grid">
+            <div class="d-flex border-bottom border-dark fs-6 fw-semibold">
+              <span class="col-2 mb-1 ms-1">时间</span>
+              <span class="col-10 mb-1 ms-1">物流</span>
+            </div>
+            <ul class="list-group list-group-flush overflow-y-auto context placeholder-glow">
+              <ng-container *ngIf="logistics.context?.length; else loading">
+                <li class="list-group-item px-1" *ngFor="let ctx of logistics.context">
+                  <div class="d-flex">
+                    <span class="col-2">{{ +ctx.time * 1000 | date }}</span>
+                    <span class="col-10">{{ ctx.desc }}</span>
+                  </div>
+                </li>
+              </ng-container>
+
+              <ng-template #loading>
+                <li class="list-group-item px-1">
+                  <div class="loading">
+                    <div>
+                      <span class="placeholder bg-dark w-100"></span>
+                    </div>
+                    <div>
+                      <span class="placeholder bg-dark w-100"></span>
+                      <span class="placeholder bg-dark w-100"></span>
+                    </div>
+                  </div>
+                </li>
+              </ng-template>
+            </ul>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
