@@ -10,6 +10,11 @@ const initState: State = {
   logisticses: [],
 };
 
+// {
+//   tn: 'dsadsadsad',
+//   context: [],
+//   err: '',
+// },
 export const logisticsReducer = createReducer(
   initState,
   on(fromLogistics.searchStart, (state, action) => {

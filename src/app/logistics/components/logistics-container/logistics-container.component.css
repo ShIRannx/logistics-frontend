@@ -10,11 +10,17 @@
   padding-top: 0.5rem;
   padding-bottom: unset;
 }
+.time {
+  width: 164px;
+}
 .context {
-  height: 128px;
+  max-height: 128px;
 }
-.loading {
-  display: grid;
-  grid-template-columns: 15% 1fr;
-  gap: 12px;
-}
+/* .context { */
+/*   height: 128px; */
+/* } */
+/* .loading { */
+/*   display: grid; */
+/*   grid-template-columns: 15% 1fr; */
+/*   gap: 12px; */
+/* } */
