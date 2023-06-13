@@ -1,9 +1,8 @@
 
 FROM node:alpine AS builder
 WORKDIR /app
-RUN npm install -g @angular/cli@14.2.10
 COPY . /app
-RUN npm install && ng build --aot -c production --output-path dist
+RUN npm install -D && npm run build-prod
 
 FROM nginx:alpine-slim
 COPY ./nginx/conf.d/ /etc/nginx/conf.d/

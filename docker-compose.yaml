@@ -6,5 +6,7 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/shirann/logistics-crawler-frontend:${BUILD_ID}
     container_name: logistics-crawler-frontend
     restart: always
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d
     ports:
       - 8080:80

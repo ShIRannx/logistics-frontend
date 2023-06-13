@@ -11,16 +11,8 @@
   padding-bottom: unset;
 }
 .time {
-  width: 164px;
+  width: 192px;
 }
 .context {
   max-height: 128px;
 }
-/* .context { */
-/*   height: 128px; */
-/* } */
-/* .loading { */
-/*   display: grid; */
-/*   grid-template-columns: 15% 1fr; */
-/*   gap: 12px; */
-/* } */
