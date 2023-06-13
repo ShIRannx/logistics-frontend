@@ -14,7 +14,7 @@ export const deleteSuccess = createAction(
 );
 export const updateUser = createAction(
   `${USER_PREFIX} Update User`,
-  props<{ password: string; authz: boolean; id: string }>()
+  props<{ id: string; password: string; username: string; authz: boolean }>()
 );
 export const updateSeccess = createAction(
   `${USER_PREFIX} Update Success`,

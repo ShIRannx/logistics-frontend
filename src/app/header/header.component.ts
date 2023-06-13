@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, take } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../auth/auth.model';
 import * as fromApp from '../store/app.reducer';
 import * as AuthActions from '../auth/store/auth.actions';
@@ -13,7 +13,7 @@ import * as AuthActions from '../auth/store/auth.actions';
 export class HeaderComponent {
   user: Observable<{ user: User | null }>;
   constructor(private store: Store<fromApp.AppState>) {
-    this.user = this.store.select('auth').pipe(take(1));
+    this.user = this.store.select('auth');
   }
   onLogout() {
     this.store.dispatch(AuthActions.logout());

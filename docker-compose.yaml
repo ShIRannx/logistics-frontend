@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  logistics-crawler-frontend:
+    build: .
+    image: registry.cn-hangzhou.aliyuncs.com/shirann/logistics-crawler-frontend:${BUILD_ID}
+    container_name: logistics-crawler-frontend
+    restart: always
+    ports:
+      - 8080:80

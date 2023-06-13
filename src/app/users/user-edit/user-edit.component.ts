@@ -51,7 +51,12 @@ export class UserEditComponent implements OnInit {
 
     this.editMode
       ? this.store.dispatch(
-          UserActions.updateUser({ password, authz: admin, id: this.id })
+          UserActions.updateUser({
+            username,
+            password,
+            id: this.id,
+            authz: admin,
+          })
         )
       : this.store.dispatch(
           UserActions.addUser({ username, password, authz: admin })

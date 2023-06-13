@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { adminGuard } from '../auth/guards/admin.guards';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserStartComponent } from './user-start/user-start.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   {
     path: '',
     component: UsersComponent,
+    canMatch: [adminGuard],
     children: [
       { path: '', component: UserStartComponent },
       { path: 'new', component: UserEditComponent },

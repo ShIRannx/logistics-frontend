@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { concatMap, map, of, switchMap, withLatestFrom } from 'rxjs';
+import { concatMap, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../user.model';
 import * as UserActions from './user.actions';
 import * as fromApp from '../../store/app.reducer';
 import { getUsers } from './user.selector';
+import { Router } from '@angular/router';
 
 interface FetchResponse {
   users: User[];
@@ -19,6 +20,7 @@ interface UserReponse {
 @Injectable()
 export class UserEffects {
   constructor(
+    private router: Router,
     private http: HttpClient,
     private actions$: Actions,
     private store: Store<fromApp.AppState>
@@ -44,11 +46,9 @@ export class UserEffects {
       concatMap(a =>
         this.http
           .post<UserReponse>(environment.userEndpoint, {
-            params: {
-              authz: a.authz,
-              password: a.password,
-              username: a.username,
-            },
+            authz: a.authz,
+            password: a.password,
+            username: a.username,
           })
           .pipe(map(resp => UserActions.addSuccess({ user: resp.user })))
       )
@@ -60,11 +60,43 @@ export class UserEffects {
       ofType(UserActions.deleteUser),
       switchMap(a =>
         this.http
-          .delete(`${environment.userEndpoint}/${a.id}`)
+          .delete(`${environment.userEndpoint}${a.id}`)
           .pipe(map(() => UserActions.deleteSuccess({ id: a.id })))
       )
     )
   );
 
-  // updateUser = createEffect(()=>)
+  userRedirect = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(
+          UserActions.addSuccess,
+          UserActions.updateSeccess,
+          UserActions.deleteSuccess
+        ),
+        tap(() => {
+          this.router.navigate(['/', 'users']);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  updateUser = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActions.updateUser),
+      switchMap(a =>
+        this.http
+          .patch<UserReponse>(`${environment.userEndpoint}${a.id}`, {
+            authz: a.authz,
+            username: a.username,
+            password: a.password,
+          })
+          .pipe(
+            map(resp =>
+              UserActions.updateSeccess({ user: resp.user, id: a.id })
+            )
+          )
+      )
+    )
+  );
 }

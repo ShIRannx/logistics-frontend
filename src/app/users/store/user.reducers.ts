@@ -20,12 +20,12 @@ export const userReducer = createReducer(
     ...s,
     users: [...s.users, a.user],
   })),
-  // on(UserActions.updateUser, (s, a) => {
-  //   const users = [...s.users];
-  //   const updateUserIndex = users.findIndex(u => u.uuid == a.id);
-  //   users[updateUserIndex] = a.user;
-  //   return { ...s, users };
-  // }),
+  on(UserActions.updateSeccess, (s, a) => {
+    const users = [...s.users];
+    const updateUserIndex = users.findIndex(u => u.uuid == a.id);
+    users[updateUserIndex] = a.user;
+    return { ...s, users };
+  }),
   on(UserActions.fetchUsers, s => ({ ...s, loading: true, err: null })),
   on(UserActions.setUsers, (s, a) => ({
     ...s,

@@ -22,9 +22,7 @@
     <ng-container *ngIf="logisticses | async as ls">
       <ng-container *ngIf="!ls.logisticses.length; else logistics">
         <div class="mb-5"></div>
-        <h1 class="text-center display-4">
-          Your Logistics Result will show here.
-        </h1>
+        <h1 class="text-center display-5">The logistics will show here.</h1>
       </ng-container>
       <ng-template #logistics>
         <app-logistics-container
