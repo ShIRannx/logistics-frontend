@@ -34,6 +34,6 @@ export const userReducer = createReducer(
   })),
   on(UserActions.deleteSuccess, (s, a) => ({
     ...s,
-    users: s.users.filter(u => u.uuid === a.id),
+    users: s.users.filter(u => u.uuid !== a.id),
   }))
 );
