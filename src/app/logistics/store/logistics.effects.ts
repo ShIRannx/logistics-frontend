@@ -20,7 +20,7 @@ export class LogisticsEffects {
     this.store.select(getAuthToken).subscribe(token => {
       this.token = token ?? '';
       this.ws$ = new WebSocketSubject(
-        `${environment.logisticsEndpoint}?token=${token}`
+        `${environment.logisticsEndpoint}/?token=${token}`
       );
     });
     this.ws$ = new WebSocketSubject(

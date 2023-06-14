@@ -2,7 +2,7 @@
 FROM node:alpine AS builder
 WORKDIR /app
 COPY . /app
-RUN npm install -D && npm run build-prod
+RUN npm install -D --registry=https://registry.npm.taobao.org && npm run build-prod
 
 FROM nginx:alpine-slim
 COPY ./nginx/conf.d/ /etc/nginx/conf.d/
